@@ -13,14 +13,15 @@ function App() {
   // 🔹 Cargar tareas guardadas
   useEffect(() => {
     const data = localStorage.getItem("tareas");
-    if (data) {
+    if (data !== null) {
       setTareas(JSON.parse(data));
     }
   }, []);
 
-  // 🔹 Guardar tareas automáticamente
   useEffect(() => {
-    localStorage.setItem("tareas", JSON.stringify(tareas));
+    if (tareas.length > 0) {
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+    }
   }, [tareas]);
 
   // 🧠 IA: calcular puntaje
