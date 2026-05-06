@@ -24,7 +24,7 @@ function App() {
     }
   }, [tareas]);
 
-  // 🧠 IA: calcular puntaje
+  // IA: calcular puntaje
   const calcularPuntaje = (t) => {
     return (
       Number(t.importancia) * 2 +
@@ -33,7 +33,7 @@ function App() {
     );
   };
 
-  // 🧠 IA: recomendación
+  // IA: recomendación
   const recomendacion = (t) => {
     if (t.dias <= 2) return "Urgente";
     if (t.dificultad >= 4) return "Dividir tarea";
@@ -41,7 +41,7 @@ function App() {
     return "Normal";
   };
 
-  // 🧠 IA: nivel de prioridad (para colores)
+  // IA: nivel de prioridad (para colores)
   const nivelPrioridad = (t) => {
     const p = calcularPuntaje(t);
     if (p > 8) return "alta";
@@ -49,7 +49,7 @@ function App() {
     return "baja";
   };
 
-  // 🔹 Ordenar tareas
+  // Ordenar tareas
   const ordenarTareas = () => {
     const ordenadas = [...tareas].sort((a, b) => {
       return calcularPuntaje(b) - calcularPuntaje(a);
@@ -57,7 +57,7 @@ function App() {
     setTareas(ordenadas);
   };
 
-  // 🔹 Agregar tarea
+  // Agregar tarea
   const agregarTarea = () => {
     if (!form.nombre) return;
 
@@ -72,13 +72,13 @@ function App() {
     });
   };
 
-  // 🔹 Eliminar tarea
+  // Eliminar tarea
   const eliminarTarea = (index) => {
     const nuevas = tareas.filter((_, i) => i !== index);
     setTareas(nuevas);
   };
 
-  // 🔹 Marcar completada
+  // Marcar completada
   const toggleCompletada = (index) => {
     const nuevas = [...tareas];
     nuevas[index].completada = !nuevas[index].completada;
